@@ -6,6 +6,12 @@ const app = express();
 
 const PORT = process.env.PORT;
 
+// Global Middlewares
+
+// (for request body parsing)
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Just a Home Route to check the server
 app.get("/", (req, res) => {
   res
