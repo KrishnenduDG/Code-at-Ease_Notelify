@@ -1,20 +1,13 @@
 import { Router } from "express";
+import NotesController from "../controller/notes.js";
 
 const notesRouter = new Router();
 
 // Chaining of Routes
 notesRouter
-  .post("/", (req, res) => {
-    res.status(200).json({ status: true, msg: "Notes Creation (C) Route" });
-  })
-  .get("/", (req, res) => {
-    res.status(200).json({ status: true, msg: "Notes Reading (R) Route" });
-  })
-  .patch("/", (req, res) => {
-    res.status(200).json({ status: true, msg: "Notes Updating (U) Route" });
-  })
-  .delete("/", (req, res) => {
-    res.status(200).json({ status: true, msg: "Notes Deletion (D) Route" });
-  });
+  .post("/", NotesController.handleCreateNote)
+  .get("/", NotesController.handleGetNote)
+  .patch("/", NotesController.handleUpdateNote)
+  .delete("/", NotesController.handleDeleteNote);
 
 export default notesRouter;
