@@ -23,6 +23,12 @@ app.get("/", (req, res) => {
 app.use("/auth", authRouter);
 app.use("/notes", notesRouter);
 
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ status: false, msg: "Internal server error" });
+});
+
 app.listen(PORT, () =>
   console.log(`Server listening at http://localhost:${PORT}`)
 );

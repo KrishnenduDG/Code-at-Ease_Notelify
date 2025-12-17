@@ -42,13 +42,7 @@ class AuthController {
       return;
     }
 
-    // Creating a new User
-    await UserRepository.createUser(
-      email,
-      await generateHashedPassword(password)
-    );
-
-    res.status(201).json({ status: true, msg: "Account created successfully" });
+    throw new Error("Haha");
   };
 
   static handleLogin = async (req, res) => {
